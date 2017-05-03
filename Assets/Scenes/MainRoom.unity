@@ -323,51 +323,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6967676b4408dc54c9bdf914583e74a4, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &533675904 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1470514933115334, guid: 6967676b4408dc54c9bdf914583e74a4,
-    type: 2}
-  m_PrefabInternal: {fileID: 533675903}
---- !u!114 &533675905
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 533675904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7d6513c2cdf97f409654a2a4114d9b1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keywords:
-  - Keyword: Price
-    Response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 533675906}
-          m_MethodName: SetPrice
-          m_Mode: 5
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
---- !u!114 &533675906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 533675904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3771733a80b37b24e9a0edf2adc33b07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &639145588 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1483321450672476, guid: 0cab741170d754742a5a3a7d884d60c9,
