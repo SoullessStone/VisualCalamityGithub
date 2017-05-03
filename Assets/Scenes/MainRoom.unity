@@ -388,8 +388,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RecognizerStart: 0
   Keywords:
-  - Keyword: Price
+  - Keyword: Set Price
     KeyCode: 115
+  - Keyword: Remove
+    KeyCode: 58
+  - Keyword: Rampage Start
+    KeyCode: 57
+  - Keyword: Rampage Stop
+    KeyCode: 60
+  - Keyword: Room Save
+    KeyCode: 91
+  - Keyword: Room Import
+    KeyCode: 95
 --- !u!1001 &1024910614
 Prefab:
   m_ObjectHideFlags: 0
