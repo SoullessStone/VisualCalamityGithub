@@ -150,6 +150,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 639145588}
+  RaycastLayerMasks:
+  - serializedVersion: 2
+    m_Bits: 4
 --- !u!4 &497751775 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010560871102, guid: d379ed0a5618c9f479f58bd83a2d0ad3,
