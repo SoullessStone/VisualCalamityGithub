@@ -15,10 +15,14 @@ public class Firescript : MonoBehaviour {
 	void Update () {
         RaycastHit hit = new RaycastHit();
         
-		if(Physics.Raycast(transform.position, Vector3.forward, out hit))
+		if(Physics.Raycast(transform.position, Camera.main.transform.forward, out hit))
         {
-            obj.transform.position = hit.transform.position;
-
+            obj.transform.position = hit.point;
+            obj.SetActive(true);
+        }
+        else
+        {
+            obj.SetActive(false);
         }
 	}
 }
