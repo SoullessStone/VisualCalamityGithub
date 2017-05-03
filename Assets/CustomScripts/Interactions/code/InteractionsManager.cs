@@ -14,7 +14,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler
 
 	// Use this for initialization
 	void Start () {
-        firescript = GetComponent<Firescript>();
+        firescript = FindObjectOfType<Firescript>();
 	}
 	
 	// Update is called once per frame
