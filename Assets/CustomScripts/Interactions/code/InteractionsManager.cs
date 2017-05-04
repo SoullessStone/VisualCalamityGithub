@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using HoloToolkit.Unity.InputModule;
 using UnityEngine;
+using System;
+using HoloToolkit.Unity;
 
 public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHandler
 {
@@ -67,6 +69,13 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         toQuat.x = 0;
         toQuat.z = 0;
         GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat);
+
+        //Anchor Stuff
+        ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
+        clientManager.AnchorCounter++;
+        string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
+        WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
+
         cameraManager.setLastCreated(lastCreated);
     }
 

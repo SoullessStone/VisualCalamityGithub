@@ -10,15 +10,11 @@ public class PriceController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-     //   GameObject PriceCollection = GameObject.Find("HologramCollection");
-       // this.transform.SetParent(PriceCollection.transform);
+        GameObject PriceCollection = GameObject.Find("HologramCollection");
+        this.transform.SetParent(PriceCollection.transform);
 
-        //Anchor Stuff
-        clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
-        clientManager.AnchorCounter++;
-        string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
-        WorldAnchorManager.Instance.AttachAnchor(this.gameObject,tmp);
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {

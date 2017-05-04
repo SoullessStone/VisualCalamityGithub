@@ -48,8 +48,6 @@ public class ClientManager : MonoBehaviour
 
                     world.OnTrackingChanged += World_OnTrackingChanged;
                
-                    GameObject go= GameObject.CreatePrimitive(PrimitiveType.Cube);
-                    go.transform.position = world.transform.position;
                     //WorldAnchorManager.Instance.AttachAnchor(Hologram, s);
                 }
             }
