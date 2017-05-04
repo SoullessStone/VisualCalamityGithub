@@ -31,5 +31,6 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         toQuat.x = 0;
         toQuat.z = 0;
         Instantiate(pointofInterest, firescript.hitPoint-gameObject.transform.position, toQuat);
+   
     }
 }
