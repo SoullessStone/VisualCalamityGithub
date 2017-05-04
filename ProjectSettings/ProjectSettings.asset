@@ -397,7 +397,7 @@ PlayerSettings:
   metroCertificatePassword: 
   metroCertificateSubject: DefaultCompany
   metroCertificateIssuer: DefaultCompany
-  metroCertificateNotAfter: 00b843be0fe3d301
+  metroCertificateNotAfter: 000cdbb0a9e3d301
   metroApplicationDescription: VirtualCalamityProject
   wsaImages: {}
   metroTileShortName: 
