@@ -8,6 +8,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     
     public GameObject pointofInterest;
     private RaycastCollisions raycastCollissions;
+    public GameObject flareMobile;
     private VisualizeAndCollide visualizeAndCollide;
     private CameraManager cameraManager;
 
@@ -19,7 +20,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 	// Use this for initialization
 	void Start () {
         raycastCollissions = FindObjectOfType<RaycastCollisions>();
-        visualizeAndCollide = FindObjectOfType<VisualizeAndCollide>();
+        visualizeAndCollide = flareMobile.GetComponent<VisualizeAndCollide>();
         cameraManager = FindObjectOfType<CameraManager>();
     }
 	
@@ -39,10 +40,10 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
                 Remove();
                 break;
             case "Fire Start":
-                visualizeAndCollide.rampageModeActive = true;
+                visualizeAndCollide.activateObject();
                 break;
             case "Fire Stop":
-                visualizeAndCollide.rampageModeActive = false;
+                visualizeAndCollide.deactivateObject();
                 break;
             case "Room Save":
                 RoomSave();
