@@ -27,10 +27,52 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 
     public void OnSpeechKeywordRecognized(SpeechKeywordRecognizedEventData eventData)
     {
+        switch (eventData.RecognizedText)
+        {
+            case "Set Price":
+                SetPrice();
+                break;
+            case "Remove":
+                Remove();
+                break;
+            case "Rampage Start":
+                // Todo: Call FireScript
+                break;
+            case "Rampage Stop":
+                // Todo: Call FireScript
+                break;
+            case "Room Save":
+                RoomSave();
+                break;
+            case "Room Import":
+                RoomImport();
+                break;
+            case "Dracarys":
+                // Todo: Call FireScript
+                break;
+        }
+
+    }
+
+    private void SetPrice()
+    {
         Quaternion toQuat = Camera.main.transform.localRotation;
         toQuat.x = 0;
         toQuat.z = 0;
-        Instantiate(pointofInterest, firescript.hitPoint-gameObject.transform.position, toQuat);
-   
+        Instantiate(pointofInterest, firescript.hitPoint - gameObject.transform.position, toQuat);
+    }
+
+    private void Remove()
+    {
+    }
+
+    private void RoomSave()
+    {
+
+    }
+
+    private void RoomImport()
+    {
+
     }
 }
