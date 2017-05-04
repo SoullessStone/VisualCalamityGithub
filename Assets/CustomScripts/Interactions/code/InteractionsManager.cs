@@ -65,7 +65,8 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         Quaternion toQuat = Camera.main.transform.localRotation;
         toQuat.x = 0;
         toQuat.z = 0;
-        Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat);
+        GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat);
+        cameraManager.setLastCreated(lastCreated);
     }
 
     private void Remove()

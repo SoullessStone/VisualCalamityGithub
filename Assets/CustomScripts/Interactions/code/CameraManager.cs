@@ -8,6 +8,7 @@ public class CameraManager : MonoBehaviour
 {
     PhotoCapture photoCaptureObject = null;
     Texture2D targetTexture = null;
+    GameObject lastCreatedPrice;
 
     // Use this for initialization
     void Start()
@@ -42,14 +43,19 @@ public class CameraManager : MonoBehaviour
         photoCaptureFrame.UploadImageDataToTexture(targetTexture);
 
         targetTexture.EncodeToJPG();
-       
+
         // Create a GameObject to which the texture can be applied
-        GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
-        Renderer quadRenderer = quad.GetComponent<Renderer>() as Renderer;
+        //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
+
+        if (lastCreatedPrice == null)
+        {
+            return;
+        }
+        Renderer quadRenderer = lastCreatedPrice.GetComponent<Renderer>() as Renderer;
         quadRenderer.material = new Material(Shader.Find("Standard"));
 
-        quad.transform.parent = this.transform;
-        quad.transform.localPosition = new Vector3(0.0f, 0.0f, 3.0f);
+        //quad.transform.parent = this.transform;
+        //quad.transform.localPosition = new Vector3(0.0f, 0.0f, 3.0f);
 
         quadRenderer.material.SetTexture("_MainTex", targetTexture);
         
@@ -62,5 +68,10 @@ public class CameraManager : MonoBehaviour
         // Shutdown the photo capture resource
         photoCaptureObject.Dispose();
         photoCaptureObject = null;
+    }
+
+    public void setLastCreated(GameObject obj)
+    {
+        lastCreatedPrice = obj;
     }
 }
