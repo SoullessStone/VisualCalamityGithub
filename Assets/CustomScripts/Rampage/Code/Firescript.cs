@@ -32,4 +32,19 @@ public class Firescript : MonoBehaviour {
             obj.SetActive(false);
         }
 	}
+
+    void OnTriggerEnter(Collider other)
+    {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(transform.position, Camera.main.transform.forward, out hit))
+        {
+            normalHit = hit.normal;
+            hitPoint = hit.point;
+
+            obj.transform.position = hit.point;
+
+            obj.SetActive(true);
+        }
+        Destroy(other.gameObject);
+    }
 }
