@@ -147,6 +147,7 @@ GameObject:
   - component: {fileID: 128011173}
   - component: {fileID: 128011172}
   - component: {fileID: 128011171}
+  - component: {fileID: 128011175}
   m_Layer: 0
   m_Name: TotalPrice
   m_TagString: Untagged
@@ -290,6 +291,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PivotAxis: 0
+--- !u!114 &128011175
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 128011167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e3f5bf32b10ba44a51e41379b12f26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  price: 0
+  text: {fileID: 128011169}
 --- !u!1 &497751768 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1000011021619270, guid: d379ed0a5618c9f479f58bd83a2d0ad3,
@@ -491,7 +505,7 @@ GameObject:
   m_Component:
   - component: {fileID: 622867648}
   m_Layer: 0
-  m_Name: HologramConnection
+  m_Name: HologramCollection
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
