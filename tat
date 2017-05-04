@@ -1,0 +1,124 @@
+[33mcommit f79bbe0e65515fc2f1af2ae1e76a20ceb34bb702[m
+Merge: f82aa6a 515f41a
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Thu May 4 09:30:10 2017 +0200
+
+    Merge branch 'master' of https://github.com/SoullessStone/VisualCalamityGithub
+
+[33mcommit 515f41af4d6af7e377c0eeea3be949a1f032ae57[m
+Author: Hutchison John M. ( U111290 ) <john.hutchison@mobi.ch>
+Date:   Thu May 4 09:21:38 2017 +0200
+
+    added empty game object
+
+[33mcommit 806f45f362af09a566fe83454ec60fd2c8733839[m
+Author: Fabrizio Perin (U114959) <fabrizio.perin@mobi.ch>
+Date:   Wed May 3 19:04:36 2017 +0200
+
+    done something on the fireScript
+
+[33mcommit f82aa6a1660389621710bda052341d046268d545[m
+Merge: 7557b5f 32c2bd1
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 18:32:18 2017 +0200
+
+    Merge branch 'master' of https://git.mobi.mobicorp.ch/scm/cd/virtualcalamity
+
+[33mcommit 7557b5ffdedd5efc3b5b8f7d5217b5e958b80e57[m
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 18:32:02 2017 +0200
+
+    more commands
+
+[33mcommit 32c2bd1a50f025f07f32edb40cc7101bc8076dcc[m
+Merge: b8993cc dfd5e96
+Author: Fabrizio Perin (U114959) <fabrizio.perin@mobi.ch>
+Date:   Wed May 3 17:57:23 2017 +0200
+
+    Merge branch 'master' of https://git.mobi.mobicorp.ch/scm/cd/virtualcalamity
+
+[33mcommit b8993ccf9f0727fbfeeed2e3cdbfc576974cf9dd[m
+Author: Fabrizio Perin (U114959) <fabrizio.perin@mobi.ch>
+Date:   Wed May 3 17:57:06 2017 +0200
+
+    cleanup script
+
+[33mcommit dfd5e965a9b593c28039cf365e79a8b6e5909259[m
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 17:54:25 2017 +0200
+
+    set price works
+
+[33mcommit 9dec4606aad27b8ec68290fb6bc3e557d4920cc6[m
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 17:42:38 2017 +0200
+
+    juhu, fine push
+
+[33mcommit c71c46c74b0498820b2fe9f173852c619cd64ac3[m
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 17:00:48 2017 +0200
+
+    voice recognition
+
+[33mcommit 518802f8de4f8171fad95dbc2c919d215aeff558[m
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 16:42:18 2017 +0200
+
+    df
+
+[33mcommit f8040f54da9080921b8cf6e7c5c25e31b9351561[m
+Merge: dc54a3a def0afc
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 16:12:51 2017 +0200
+
+    Merge branch 'master' into feature/markThings
+
+[33mcommit dc54a3ad59601f2caa06c5db42ce528cfd9c1f1d[m
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 16:12:38 2017 +0200
+
+    wip
+
+[33mcommit def0afcded1c84f55b76274983048bcd3e67e5a6[m
+Author: Fabrizio Perin (U114959) <fabrizio.perin@mobi.ch>
+Date:   Wed May 3 16:00:21 2017 +0200
+
+    clean up
+
+[33mcommit fb17135890b24f15f1341ff7cdde677058f761f2[m
+Merge: 068c8f1 105a9b5
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 15:59:03 2017 +0200
+
+    Merge branch 'master' into feature/markThings
+
+[33mcommit 068c8f106f27706430d08e7d4d676791bc3d4a6e[m
+Author: Utz Michel (U115726) <michel.utz@mobi.ch>
+Date:   Wed May 3 15:58:45 2017 +0200
+
+    started to put notes in the scene
+
+[33mcommit 105a9b5742b61e8f95126c21801a63e485ff0a5d[m
+Author: Fabrizio Perin (U114959) <fabrizio.perin@mobi.ch>
+Date:   Wed May 3 15:57:30 2017 +0200
+
+    hit points changes
+
+[33mcommit 988c54e39bfe21c3ece6d45ce89a6dd9a3b62a18[m
+Author: Fabrizio Perin (U114959) <fabrizio.perin@mobi.ch>
+Date:   Wed May 3 14:54:45 2017 +0200
+
+    setup for fire
+
+[33mcommit 01253a9bc3bc8c46c729080e28094af494d076f3[m
+Author: Fabrizio Perin (U114959) <fabrizio.perin@mobi.ch>
+Date:   Wed May 3 14:17:30 2017 +0200
+
+    new scripts
+
+[33mcommit 64f8283cd7bc00dfbcb69e549212bcb7d2d54129[m
+Author: Fabrizio Perin (U114959) <fabrizio.perin@mobi.ch>
+Date:   Wed May 3 13:23:42 2017 +0200
+
+    first commit
