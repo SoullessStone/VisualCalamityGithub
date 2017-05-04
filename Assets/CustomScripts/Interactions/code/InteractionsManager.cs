@@ -9,6 +9,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     public GameObject pointofInterest;
     private RaycastCollisions raycastCollissions;
     private VisualizeAndCollide visualizeAndCollide;
+    private CameraManager cameraManager;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
@@ -19,6 +20,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 	void Start () {
         raycastCollissions = FindObjectOfType<RaycastCollisions>();
         visualizeAndCollide = FindObjectOfType<VisualizeAndCollide>();
+        cameraManager = FindObjectOfType<CameraManager>();
     }
 	
 	// Update is called once per frame
@@ -50,6 +52,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
                 break;
             case "Burn":
                 // Todo: Call FireScript
+                break;
+            case "Snapshot":
+                cameraManager.takePhoto();
                 break;
         }
 
