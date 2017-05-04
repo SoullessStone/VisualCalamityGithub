@@ -10,8 +10,7 @@ public class PriceController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        GameObject PriceCollection = GameObject.Find("HologramCollection");
-        this.transform.SetParent(PriceCollection.transform);
+   
 
 
     }

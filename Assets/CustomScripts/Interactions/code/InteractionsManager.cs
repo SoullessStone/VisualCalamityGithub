@@ -68,8 +68,10 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         Quaternion toQuat = Camera.main.transform.localRotation;
         toQuat.x = 0;
         toQuat.z = 0;
-        GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat);
+        GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
 
+
+        this.transform.SetParent(PriceCollection.transform);
         //Anchor Stuff
         ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
         clientManager.AnchorCounter++;
