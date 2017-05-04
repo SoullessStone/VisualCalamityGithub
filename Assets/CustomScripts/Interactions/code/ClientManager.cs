@@ -16,7 +16,6 @@ public class ClientManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
         Invoke("importAnchors", 2);
     }
 
@@ -45,7 +44,7 @@ public class ClientManager : MonoBehaviour
                         AnchorCounter = number;
                     }
 
-                    GameObject obj = Instantiate(Hologram);
+                    GameObject obj = Instantiate(Hologram, GameObject.Find("HologramCollection").transform);
                     WorldAnchor world = WorldAnchorManager.Instance.AnchorStore.Load(s, obj);
 
                     world.OnTrackingChanged += World_OnTrackingChanged;
