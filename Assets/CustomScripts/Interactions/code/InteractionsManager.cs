@@ -7,8 +7,8 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 {
     
     public GameObject pointofInterest;
-    private Firescript firescript;
-
+    private RaycastCollisions raycastCollissions;
+    private VisualizeAndCollide visualizeAndCollide;
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
@@ -17,8 +17,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 
 	// Use this for initialization
 	void Start () {
-        firescript = FindObjectOfType<Firescript>();
-	}
+        raycastCollissions = FindObjectOfType<RaycastCollisions>();
+        visualizeAndCollide = FindObjectOfType<VisualizeAndCollide>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -35,11 +36,11 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
             case "Remove":
                 Remove();
                 break;
-            case "Rampage Start":
-                // Todo: Call FireScript
+            case "Fire Start":
+                visualizeAndCollide.rampageModeActive = true;
                 break;
-            case "Rampage Stop":
-                // Todo: Call FireScript
+            case "Fire Stop":
+                visualizeAndCollide.rampageModeActive = false;
                 break;
             case "Room Save":
                 RoomSave();
@@ -47,7 +48,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
             case "Room Import":
                 RoomImport();
                 break;
-            case "Dracarys":
+            case "Burn":
                 // Todo: Call FireScript
                 break;
         }
@@ -59,7 +60,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         Quaternion toQuat = Camera.main.transform.localRotation;
         toQuat.x = 0;
         toQuat.z = 0;
-        Instantiate(pointofInterest, firescript.hitPoint - gameObject.transform.position, toQuat);
+        Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat);
     }
 
     private void Remove()
