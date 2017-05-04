@@ -27,6 +27,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 
     public void OnSpeechKeywordRecognized(SpeechKeywordRecognizedEventData eventData)
     {
-        Instantiate(pointofInterest, firescript.hitPoint-gameObject.transform.position, Camera.main.transform.localRotation);
+        Quaternion toQuat = Camera.main.transform.localRotation;
+        toQuat.x = 0;
+        toQuat.z = 0;
+        Instantiate(pointofInterest, firescript.hitPoint-gameObject.transform.position, toQuat);
     }
 }
