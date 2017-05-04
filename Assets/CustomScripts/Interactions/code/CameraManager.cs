@@ -52,7 +52,11 @@ public class CameraManager : MonoBehaviour
             return;
         }
         Renderer quadRenderer = lastCreatedPrice.GetComponent<Renderer>() as Renderer;
+        //quadRenderer.material = new Material(Shader.Find("Standard"));
+  
         quadRenderer.material = new Material(Shader.Find("Standard"));
+        //It is due to the the same name of the Material...Find and rename the material of the new object then 
+        //remove the mesh renderer component and add it back.. and Now add the material to mesh renderer.. 
 
         //quad.transform.parent = this.transform;
         //quad.transform.localPosition = new Vector3(0.0f, 0.0f, 3.0f);
@@ -72,6 +76,9 @@ public class CameraManager : MonoBehaviour
 
     public void setLastCreated(GameObject obj)
     {
+        if(lastCreatedPrice!=null)
+            lastCreatedPrice.GetComponent<Renderer>().material = new Material(Shader.Find("VertexLit"));
+       
         lastCreatedPrice = obj;
     }
 }
