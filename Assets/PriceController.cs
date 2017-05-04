@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PriceController : MonoBehaviour {
-    public int Price;
+    public int Price = 1000;
    
 
 	// Use this for initialization
