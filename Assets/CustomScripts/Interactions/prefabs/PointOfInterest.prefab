@@ -29,7 +29,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!23 &23275785039291480
 MeshRenderer:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c57a1e88e8f4b247a6834cbf4e379a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Price: 0
+  Price: 1000
 --- !u!222 &222023164260175902
 CanvasRenderer:
   m_ObjectHideFlags: 1
