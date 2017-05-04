@@ -44,7 +44,9 @@ public class ClientManager : MonoBehaviour
                     {
                         AnchorCounter = number;
                     }
-                    WorldAnchor world = WorldAnchorManager.Instance.AnchorStore.Load(s, Hologram);
+
+                    GameObject obj = Instantiate(Hologram);
+                    WorldAnchor world = WorldAnchorManager.Instance.AnchorStore.Load(s, obj);
 
                     world.OnTrackingChanged += World_OnTrackingChanged;
                
