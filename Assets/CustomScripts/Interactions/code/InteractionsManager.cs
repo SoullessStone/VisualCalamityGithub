@@ -11,7 +11,6 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     public GameObject pointofInterest;
     private RaycastCollisions raycastCollissions;
     public GameObject flareMobile;
-    private VisualizeAndCollide visualizeAndCollide;
     private CameraManager cameraManager;
 
     public void OnInputClicked(InputClickedEventData eventData)
@@ -22,7 +21,6 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 	// Use this for initialization
 	void Start () {
         raycastCollissions = FindObjectOfType<RaycastCollisions>();
-        visualizeAndCollide = flareMobile.GetComponent<VisualizeAndCollide>();
         cameraManager = FindObjectOfType<CameraManager>();
     }
 	
