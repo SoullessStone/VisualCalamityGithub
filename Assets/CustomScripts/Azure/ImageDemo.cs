@@ -34,6 +34,7 @@ public class ImageDemo : MonoBehaviour
 
 		client = new StorageServiceClient (storageAccount, accessKey);
 		blobService = client.GetBlobService ();
+
 	}
 
 

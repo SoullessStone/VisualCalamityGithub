@@ -45,6 +45,8 @@ public class ClientManager : MonoBehaviour
                     }
 
                     GameObject obj = Instantiate(Hologram, GameObject.Find("HologramCollection").transform);
+                    //set name to client
+                    obj.name = s;
                     WorldAnchor world = WorldAnchorManager.Instance.AnchorStore.Load(s, obj);
 
                     world.OnTrackingChanged += World_OnTrackingChanged;

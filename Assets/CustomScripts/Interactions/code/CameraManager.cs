@@ -46,7 +46,7 @@ public class CameraManager : MonoBehaviour
         photoCaptureFrame.UploadImageDataToTexture(targetTexture);
 
          byte[] pic= targetTexture.EncodeToJPG();
-        azure.PutImage(pic, "1"+".jpg");
+        azure.PutImage(pic,lastCreatedPrice.name +".jpg");
 
         // Create a GameObject to which the texture can be applied
         //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
