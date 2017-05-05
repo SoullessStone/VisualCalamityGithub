@@ -9,6 +9,8 @@ public class CameraManager : MonoBehaviour
     PhotoCapture photoCaptureObject = null;
     Texture2D targetTexture = null;
     GameObject lastCreatedPrice;
+    public ImageDemo azure;
+        
 
     // Use this for initialization
     void Start()
@@ -39,10 +41,12 @@ public class CameraManager : MonoBehaviour
 
     void OnCapturedPhotoToMemory(PhotoCapture.PhotoCaptureResult result, PhotoCaptureFrame photoCaptureFrame)
     {
+       
         // Copy the raw image data into the target texture
         photoCaptureFrame.UploadImageDataToTexture(targetTexture);
 
-        targetTexture.EncodeToJPG();
+         byte[] pic= targetTexture.EncodeToJPG();
+        azure.PutImage(pic, "1"+".jpg");
 
         // Create a GameObject to which the texture can be applied
         //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);

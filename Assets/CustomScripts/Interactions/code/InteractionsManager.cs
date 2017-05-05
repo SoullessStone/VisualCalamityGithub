@@ -42,10 +42,10 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
                 Remove();
                 break;
             case "Fire Start":
-                visualizeAndCollide.activateObject();
+                flareMobile.SetActive(true);
                 break;
             case "Fire Stop":
-                visualizeAndCollide.deactivateObject();
+                flareMobile.SetActive(false);
                 break;
             case "Room Save":
                 RoomSave();
