@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class VisualizeAndCollide : MonoBehaviour {
-    
+
+    private ReadSchadenPrice readSchadenPrice;
+
     // Use this for initialization
     void Start () {
+        readSchadenPrice = FindObjectOfType<ReadSchadenPrice>();
     }
 	
 	// Update is called once per frame
@@ -17,6 +20,7 @@ public class VisualizeAndCollide : MonoBehaviour {
         if (other.gameObject.CompareTag("PointOfInterest"))
         {
             other.gameObject.SetActive(false);
+            readSchadenPrice.increaseRemovedItems();
         }
     }
 

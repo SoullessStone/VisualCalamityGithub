@@ -12,7 +12,11 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     private RaycastCollisions raycastCollissions;
     public GameObject flareMobile;
     private CameraManager cameraManager;
- 
+
+    private RaycastCollisions raycastCollisionsScript;
+    private ImageDemo imageDemo;
+    private ReadSchadenPrice readSchadenPrice;
+
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
@@ -23,7 +27,12 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 	void Start () {
         raycastCollissions = FindObjectOfType<RaycastCollisions>();
         cameraManager = FindObjectOfType<CameraManager>();
-     
+
+        raycastCollisionsScript = FindObjectOfType<RaycastCollisions>();
+        imageDemo = FindObjectOfType<ImageDemo>();
+        readSchadenPrice = FindObjectOfType<ReadSchadenPrice>();
+        readSchadenPrice.disablePriceView();
+
     }
 	
 	// Update is called once per frame
@@ -40,9 +49,11 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
                 break;
             case "Fire Start":
                 flareMobile.SetActive(true);
+                readSchadenPrice.enablePriceView();
                 break;
             case "Fire Stop":
                 flareMobile.SetActive(false);
+                readSchadenPrice.disablePriceView();
                 break;
             case "Take Snap":
                 cameraManager.takePhoto();
