@@ -6,6 +6,7 @@ public class RaycastCollisions : MonoBehaviour {
 
     public Vector3 normalHit;
     public Vector3 hitPoint;
+    public GameObject collision;
 
     // Use this for initialization
     void Start()
@@ -21,11 +22,20 @@ public class RaycastCollisions : MonoBehaviour {
         {
             normalHit = hit.normal;
             hitPoint = hit.point;
+           
+            if (hit.transform.gameObject != null && hit.transform.gameObject.CompareTag("PointOfInterest"))
+            {
+                collision = hit.transform.gameObject;
+            }else
+            {
+                collision = null;
+            }
         }
         else
         {
             normalHit = Vector3.zero;
             hitPoint = Vector3.zero;
+            collision = null;
         }
     }
 

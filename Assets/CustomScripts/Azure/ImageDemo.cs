@@ -52,19 +52,23 @@ public class ImageDemo : MonoBehaviour
         Debug.Log( "Put image blob:" + response.Content);
 	}
 
-	
 
-/*	public IEnumerator LoadImageURL (string url)
-	{
-		UnityWebRequest www = UnityWebRequest.GetTexture (url);
-		yield return www.Send ();
-		if (www.isError) {
+
+    public IEnumerator LoadImageURL(string url)
+    {
+        UnityWebRequest www = UnityWebRequest.GetTexture(url);
+        yield return www.Send();
+        if (www.isError)
+        {
             Debug.Log("Failed to load image: " + url);
-		} else {
-			Texture texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
-			ChangeImage (texture);
-		}
-        */
+        }
+        else
+        {
+            Texture texture = ((DownloadHandlerTexture)www.downloadHandler).texture;
+
+        }
+    }
+        
 	}
 
 

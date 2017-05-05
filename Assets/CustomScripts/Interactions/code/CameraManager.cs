@@ -8,7 +8,7 @@ public class CameraManager : MonoBehaviour
 {
     PhotoCapture photoCaptureObject = null;
     Texture2D targetTexture = null;
-    GameObject lastCreatedPrice;
+    GameObject FocusedValue;
     public ImageDemo azure;
         
 
@@ -45,17 +45,17 @@ public class CameraManager : MonoBehaviour
         // Copy the raw image data into the target texture
         photoCaptureFrame.UploadImageDataToTexture(targetTexture);
 
-         byte[] pic= targetTexture.EncodeToJPG();
-        azure.PutImage(pic,lastCreatedPrice.name +".jpg");
+        byte[] pic= targetTexture.EncodeToJPG();
+        azure.PutImage(pic,FocusedValue.name +".jpg");
 
         // Create a GameObject to which the texture can be applied
         //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
 
-        if (lastCreatedPrice == null)
+        if (FocusedValue == null)
         {
             return;
         }
-        Renderer quadRenderer = lastCreatedPrice.GetComponent<Renderer>() as Renderer;
+        Renderer quadRenderer = FocusedValue.GetComponent<Renderer>() as Renderer;
         //quadRenderer.material = new Material(Shader.Find("Standard"));
   
         quadRenderer.material = new Material(Shader.Find("Standard"));
@@ -78,11 +78,12 @@ public class CameraManager : MonoBehaviour
         photoCaptureObject = null;
     }
 
-    public void setLastCreated(GameObject obj)
+    public void setFocus(GameObject obj)
     {
-        if(lastCreatedPrice!=null)
-            lastCreatedPrice.GetComponent<Renderer>().material = new Material(Shader.Find("VertexLit"));
+        if(FocusedValue!=null)
+            FocusedValue.GetComponent<Renderer>().material = new Material(Shader.Find("VertexLit"));
        
-        lastCreatedPrice = obj;
+        FocusedValue = obj;
+        FocusedValue.GetComponent<Renderer>().material.color = Color.red;
     }
 }
