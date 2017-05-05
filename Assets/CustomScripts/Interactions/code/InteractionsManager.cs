@@ -12,8 +12,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     private RaycastCollisions raycastCollissions;
     public GameObject flareMobile;
     private CameraManager cameraManager;
-    private RaycastCollisions raycastCollisionsScript;
-    private ImageDemo imageDemo;
+ 
 
     public void OnInputClicked(InputClickedEventData eventData)
     {
@@ -24,8 +23,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 	void Start () {
         raycastCollissions = FindObjectOfType<RaycastCollisions>();
         cameraManager = FindObjectOfType<CameraManager>();
-        raycastCollisionsScript = FindObjectOfType<RaycastCollisions>();
-        imageDemo = FindObjectOfType<ImageDemo>();
+     
     }
 	
 	// Update is called once per frame
@@ -46,9 +44,6 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
             case "Fire Stop":
                 flareMobile.SetActive(false);
                 break;
-            case "Load Snap":
-                LoadSnap();
-                break;
             case "Take Snap":
                 cameraManager.takePhoto();
                 break;
@@ -56,17 +51,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 
     }
 
-    private IEnumerator LoadSnap()
-    {
-        if (raycastCollisionsScript.collision != null)
-        {
-            cameraManager.setFocus(raycastCollisionsScript.collision);
-            WWW www = new WWW("https://holodemomobi.blob.core.windows.net/image/" + raycastCollisionsScript.collision.name);
-            yield return www;
-            raycastCollisionsScript.collision.GetComponent<Renderer>().material.mainTexture = www.texture;
-        }
-
-    }
+  
 
     private void SetPrice()
     {

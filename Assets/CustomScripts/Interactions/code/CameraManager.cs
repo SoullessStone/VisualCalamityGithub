@@ -84,6 +84,5 @@ public class CameraManager : MonoBehaviour
             FocusedValue.GetComponent<Renderer>().material = new Material(Shader.Find("VertexLit"));
        
         FocusedValue = obj;
-        FocusedValue.GetComponent<Renderer>().material.color = Color.red;
     }
 }
