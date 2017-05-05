@@ -607,21 +607,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RecognizerStart: 0
   Keywords:
-  - Keyword: Set Price
+  - Keyword: Set Value
     KeyCode: 115
-  - Keyword: Remove
-    KeyCode: 58
   - Keyword: Fire Start
     KeyCode: 44
   - Keyword: Fire Stop
     KeyCode: 60
-  - Keyword: Room Save
-    KeyCode: 91
-  - Keyword: Room Import
-    KeyCode: 95
-  - Keyword: Burn
+  - Keyword: Load Snap
     KeyCode: 94
-  - Keyword: Snapshot
+  - Keyword: Take Snap
     KeyCode: 97
 --- !u!1001 &1024910614
 Prefab:

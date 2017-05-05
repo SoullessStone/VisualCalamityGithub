@@ -33,11 +33,8 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     {
         switch (eventData.RecognizedText)
         {
-            case "Set Price":
+            case "Set Value":
                 SetPrice();
-                break;
-            case "Remove":
-                Remove();
                 break;
             case "Fire Start":
                 flareMobile.SetActive(true);
@@ -45,16 +42,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
             case "Fire Stop":
                 flareMobile.SetActive(false);
                 break;
-            case "Room Save":
-                RoomSave();
+            case "Load Snap":
                 break;
-            case "Room Import":
-                RoomImport();
-                break;
-            case "Burn":
-                // Todo: Call FireScript
-                break;
-            case "Snapshot":
+            case "Take Snap":
                 cameraManager.takePhoto();
                 break;
         }
