@@ -16,6 +16,10 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     private RaycastCollisions raycastCollisionsScript;
     private ImageDemo imageDemo;
     private ReadSchadenPrice readSchadenPrice;
+    /// <summary>
+    /// clientManager managing the clients and counting the anchors
+    /// </summary>
+    private ClientManager clientManager;
 
 
     public void OnInputClicked(InputClickedEventData eventData)
@@ -27,7 +31,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 	void Start () {
         raycastCollissions = FindObjectOfType<RaycastCollisions>();
         cameraManager = FindObjectOfType<CameraManager>();
-
+        clientManager= GameObject.Find("CustomManager").GetComponent<ClientManager>();
         raycastCollisionsScript = FindObjectOfType<RaycastCollisions>();
         imageDemo = FindObjectOfType<ImageDemo>();
         readSchadenPrice = FindObjectOfType<ReadSchadenPrice>();
@@ -72,7 +76,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
 
         //Anchor Stuff
-        ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
+  
         clientManager.AnchorCounter++;
         string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
         WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
