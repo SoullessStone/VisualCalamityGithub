@@ -9,7 +9,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 {
     
     public GameObject pointofInterest;
-	public GameObject pointOfDanger;
+	public GameObject danger;
+	public GameObject remark;
+
 	private RaycastCollisions raycastCollissions;
     public GameObject flareMobile;
     private CameraManager cameraManager;
@@ -62,6 +64,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 			case "Set Danger":
 				SetDanger();
 				break;
+			case "Remark":
+				SetRemark();
+				break;
         }
 
     }
@@ -87,7 +92,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         Quaternion toQuat = Camera.main.transform.localRotation;
         toQuat.x = 0;
         toQuat.z = 0;
-        GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
+		GameObject lastCreated = Instantiate(danger, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
 
         //Anchor Stuff
         ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
@@ -97,6 +102,22 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 
         cameraManager.setFocus(lastCreated);
     }
+
+	private void SetRemark()
+	{
+		Quaternion toQuat = Camera.main.transform.localRotation;
+		toQuat.x = 0;
+		toQuat.z = 0;
+		GameObject lastCreated = Instantiate(remark, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
+
+		//Anchor Stuff
+		ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
+		clientManager.AnchorCounter++;
+		string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
+		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
+
+		cameraManager.setFocus(lastCreated);
+	}
 
     private void Remove()
     {
