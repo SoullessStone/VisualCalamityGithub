@@ -9,7 +9,8 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 {
     
     public GameObject pointofInterest;
-    private RaycastCollisions raycastCollissions;
+	public GameObject pointOfDanger;
+	private RaycastCollisions raycastCollissions;
     public GameObject flareMobile;
     private CameraManager cameraManager;
 
@@ -58,13 +59,30 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
             case "Take Snap":
                 cameraManager.takePhoto();
                 break;
+			case "Set Danger":
+				SetDanger();
+				break;
         }
 
     }
 
-  
+	private void SetPrice()
+	{
+		Quaternion toQuat = Camera.main.transform.localRotation;
+		toQuat.x = 0;
+		toQuat.z = 0;
+		GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
 
-    private void SetPrice()
+		//Anchor Stuff
+		ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
+		clientManager.AnchorCounter++;
+		string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
+		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
+
+		cameraManager.setFocus(lastCreated);
+	}
+
+    private void SetDanger()
     {
         Quaternion toQuat = Camera.main.transform.localRotation;
         toQuat.x = 0;
