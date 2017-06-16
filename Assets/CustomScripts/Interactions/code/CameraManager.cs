@@ -58,17 +58,23 @@ public class CameraManager : MonoBehaviour
                 return ;
             
         }
-
+        Debug.Log("hey "+FocusedValue.name);
         azure.PutImage(pic,FocusedValue.name +".jpg");
 
 
         // Create a GameObject to which the texture can be applied
         //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
 
-     
-        FocusedValue.GetComponent<Renderer>().enabled = false;
-        Instantiate(image,FocusedValue.transform);
-        
+        /*
+                FocusedValue.SetActive(false);
+
+                image.transform.position = FocusedValue.transform.position;
+                image.transform.rotation = FocusedValue.transform.rotation;
+                image.GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
+
+            */
+
+        FocusedValue.GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
     }
 
     void OnStoppedPhotoMode(PhotoCapture.PhotoCaptureResult result)
