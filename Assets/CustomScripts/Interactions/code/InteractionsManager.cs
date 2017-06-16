@@ -19,6 +19,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     private RaycastCollisions raycastCollisionsScript;
     private ImageDemo imageDemo;
     private ReadSchadenPrice readSchadenPrice;
+	private Transform hologramCollection;
 
 
     public void OnInputClicked(InputClickedEventData eventData)
@@ -36,13 +37,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         readSchadenPrice = FindObjectOfType<ReadSchadenPrice>();
         readSchadenPrice.disablePriceView();
 
+		hologramCollection = GameObject.Find ("HologramCollection").transform;
     }
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     public void OnSpeechKeywordRecognized(SpeechKeywordRecognizedEventData eventData)
     {
         switch (eventData.RecognizedText)
@@ -64,7 +61,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 			case "Set Danger":
 				SetDanger();
 				break;
-			case "Remark":
+			case "Mark Object":
 				SetRemark();
 				break;
         }
@@ -76,7 +73,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 		Quaternion toQuat = Camera.main.transform.localRotation;
 		toQuat.x = 0;
 		toQuat.z = 0;
-		GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
+		GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, hologramCollection);
 
 		//Anchor Stuff
 		ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
@@ -92,7 +89,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         Quaternion toQuat = Camera.main.transform.localRotation;
         toQuat.x = 0;
         toQuat.z = 0;
-		GameObject lastCreated = Instantiate(danger, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
+		GameObject lastCreated = Instantiate(danger, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, hologramCollection);
 
         //Anchor Stuff
         ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
@@ -108,7 +105,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 		Quaternion toQuat = Camera.main.transform.localRotation;
 		toQuat.x = 0;
 		toQuat.z = 0;
-		GameObject lastCreated = Instantiate(remark, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, GameObject.Find("HologramCollection").transform);
+		GameObject lastCreated = Instantiate(remark, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, hologramCollection);
 
 		//Anchor Stuff
 		ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
