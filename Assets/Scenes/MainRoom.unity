@@ -450,8 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a1116a421eebf42b056acf38910449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storageAccount: holodemomobi
-  accessKey: 3Vw3L4JrBbR8SdYIImu7ky1d/FmUZUFJtpwvXWrfYqmd6bQamxy4dpICHE4jvumRkXm7dbXWA5I0s59pTv++JA==
+  storageAccount: testmobi
+  accessKey: 4Ej0s9O1XvkupsFVX9bhLErmTdn3caW+s/sCUu1cmjjZ8rsxlxmYvVUvAQrSF7TgLuo50mu8Difp7mGGH6l3YA==
   container: image
 --- !u!4 &620446701
 Transform:

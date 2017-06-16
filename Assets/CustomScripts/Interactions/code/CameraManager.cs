@@ -42,7 +42,7 @@ public class CameraManager : MonoBehaviour
 
     void OnCapturedPhotoToMemory(PhotoCapture.PhotoCaptureResult result, PhotoCaptureFrame photoCaptureFrame)
     {
-        Application.CaptureScreenshot("test.jpg");
+ 
         // Copy the raw image data into the target texture
         photoCaptureFrame.UploadImageDataToTexture(targetTexture);
 
