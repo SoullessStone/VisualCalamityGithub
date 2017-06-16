@@ -65,16 +65,16 @@ public class CameraManager : MonoBehaviour
         // Create a GameObject to which the texture can be applied
         //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
 
-        /*
-                FocusedValue.SetActive(false);
+        
 
-                image.transform.position = FocusedValue.transform.position;
-                image.transform.rotation = FocusedValue.transform.rotation;
-                image.GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
 
-            */
+        image.transform.position = FocusedValue.transform.position- new Vector3(0.25f,0.25f,-0.05f);
+        image.transform.rotation = FocusedValue.transform.rotation;
+        image.SetActive(true);
+        image.GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
 
-        FocusedValue.GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
+           
+
     }
 
     void OnStoppedPhotoMode(PhotoCapture.PhotoCaptureResult result)
@@ -86,14 +86,16 @@ public class CameraManager : MonoBehaviour
 
     public void setFocus(GameObject obj)
     {
-   
-
-    foreach (Transform child in FocusedValue.transform)
-        {
-            Destroy(child);
-        }
-
-        FocusedValue.GetComponent<Renderer>().enabled = true;
+        
+        image.SetActive(false);
         FocusedValue = obj;
+
+
+        var img = azure.LoadImageURL("https://cmblobs.blob.core.windows.net/image/" + obj.name + ".jpg");
+        if (img.Current != null)
+        {
+            Texture tex = img.Current as Texture;
+            obj.GetComponent<Renderer>().material.mainTexture = tex;
+        }
     }
 }
