@@ -10,7 +10,9 @@ public class ClientManager : MonoBehaviour
 
     public string ClientId = "18236782";
     public int AnchorCounter = 0;
-    public GameObject Hologram;
+    public GameObject PointOfInterest;
+    public GameObject Danger;
+    public GameObject Remark;
 
 
     // Use this for initialization
@@ -36,15 +38,29 @@ public class ClientManager : MonoBehaviour
             {
                 if (s.StartsWith(ClientId))
                 {
-                    string tmp = s.Remove(0, 8);
-                    Debug.Log(tmp);
-                    int number = Int32.Parse(tmp);
+                   //first is client number, second type, third photo number
+                    String [] splittedAnchor = s.Split('_');
+
+                    int number = Int32.Parse(splittedAnchor[2]);
                     if (AnchorCounter < number)
                     {
                         AnchorCounter = number;
                     }
+                    GameObject go;
+                    switch (splittedAnchor[1])
+                    {
+                        case "DAN":
+                            go = Danger;
+                            break;
+                        case "POI":
+                            go = PointOfInterest;
+                            break;
+                        default:
+                            go = Remark;
+                            break;
+                    }
 
-                    GameObject obj = Instantiate(Hologram, GameObject.Find("HologramCollection").transform);
+                    GameObject obj = Instantiate(go, GameObject.Find("HologramCollection").transform);
                     //set name to client
                     obj.name = s;
                     WorldAnchor world = WorldAnchorManager.Instance.AnchorStore.Load(s, obj);
