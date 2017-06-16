@@ -45,13 +45,13 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         switch (eventData.RecognizedText)
         {
             case "Set Value":
-				SetRelevantPoint(pointofInterest);
+				SetRelevantPoint(pointofInterest, "POI");
                 break;
 			case "Set Danger":
-				SetRelevantPoint(danger);
+				SetRelevantPoint(danger, "DAN");
 				break;
 			case "Mark Object":
-				SetRelevantPoint(remark);
+				SetRelevantPoint(remark, "REM");
 				break;
 			case "Take Snap":
 				cameraManager.takePhoto();
@@ -68,7 +68,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 
     }
 
-	private void SetRelevantPoint (GameObject relevantObject)
+	private void SetRelevantPoint (GameObject relevantObject, String objectType)
 	{
 		Quaternion toQuat = Camera.main.transform.localRotation;
 		toQuat.x = 0;
@@ -78,7 +78,8 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 		//Anchor Stuff
 		ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
 		clientManager.AnchorCounter++;
-		string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
+		string tmp = String.Concat(clientManager.ClientId, "_" + objectType);
+		tmp = String.Concat(tmp, "_" + clientManager.AnchorCounter.ToString());
 		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
 
 		//cameraManager.setFocus(lastCreated);
