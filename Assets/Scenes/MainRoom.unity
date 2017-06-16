@@ -319,7 +319,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ClientId: 18236782
   AnchorCounter: 0
-  Hologram: {fileID: 0}
+  PointOfInterest: {fileID: 1470514933115334, guid: 6967676b4408dc54c9bdf914583e74a4,
+    type: 2}
+  Danger: {fileID: 1238300773003140, guid: 3a6090f5b93466e428f00a4a13777b44, type: 2}
+  Remark: {fileID: 1261328328231392, guid: f1f746239f35dd64297a5b53411c7e95, type: 2}
 --- !u!4 &196617613
 Transform:
   m_ObjectHideFlags: 0
@@ -643,7 +646,7 @@ MonoBehaviour:
   - Keyword: Set Danger
     KeyCode: 52
   - Keyword: Mark Object
-    KeyCode: 97
+    KeyCode: 57
 --- !u!1001 &1024910614
 Prefab:
   m_ObjectHideFlags: 0
