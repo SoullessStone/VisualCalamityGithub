@@ -81,7 +81,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 		string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
 		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
 
-		cameraManager.setFocus(lastCreated);
+		//cameraManager.setFocus(lastCreated);
 	}
 		
 }
