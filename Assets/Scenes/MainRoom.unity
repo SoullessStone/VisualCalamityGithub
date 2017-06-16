@@ -903,8 +903,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68394f523dbe35640ad37ec9302b6426, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lastCreated: {fileID: 0}
   azure: {fileID: 620446700}
-  image: {fileID: 0}
+  image: {fileID: 1841357997011320, guid: c56321eb1001dbe4187d9469980a2a81, type: 2}
 --- !u!4 &1679026454
 Transform:
   m_ObjectHideFlags: 0
