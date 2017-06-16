@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 222321903009941104}
   - component: {fileID: 114868542556361790}
   - component: {fileID: 65724107679594646}
-  - component: {fileID: 114672740368067244}
+  - component: {fileID: 114385566505461870}
   m_Layer: 0
   m_Name: Danger
   m_TagString: PointOfDanger
@@ -82,7 +82,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.5, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114672740368067244
+--- !u!114 &114385566505461870
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -90,10 +90,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1238300773003140}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d4912332d15538458056d121dd51523, type: 3}
+  m_Script: {fileID: 11500000, guid: 727484295b7697745885ad1315271773, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: -100
+  rotationSpeed: 100
 --- !u!114 &114868542556361790
 MonoBehaviour:
   m_ObjectHideFlags: 1
