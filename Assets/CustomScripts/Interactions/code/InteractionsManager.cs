@@ -84,6 +84,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 		clientManager.AnchorCounter++;
 		string tmp = String.Concat(clientManager.ClientId, "_" + objectType);
 		tmp = String.Concat(tmp, "_" + clientManager.AnchorCounter.ToString());
+        relevantObject.name = tmp;
 		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
 
         cameraManager.lastCreated = relevantObject;
