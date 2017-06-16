@@ -11,9 +11,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     public GameObject pointofInterest;
 	public GameObject danger;
 	public GameObject remark;
+	public GameObject flareMobile;
 
 	private RaycastCollisions raycastCollissions;
-    public GameObject flareMobile;
     private CameraManager cameraManager;
 
     private RaycastCollisions raycastCollisionsScript;
@@ -45,8 +45,17 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         switch (eventData.RecognizedText)
         {
             case "Set Value":
-                SetPrice();
+				SetRelevantPoint(pointofInterest);
                 break;
+			case "Set Danger":
+				SetRelevantPoint(danger);
+				break;
+			case "Mark Object":
+				SetRelevantPoint(remark);
+				break;
+			case "Take Snap":
+				cameraManager.takePhoto();
+				break;
             case "Fire Start":
                 flareMobile.SetActive(true);
                 readSchadenPrice.enablePriceView();
@@ -55,25 +64,16 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
                 flareMobile.SetActive(false);
                 readSchadenPrice.disablePriceView();
                 break;
-            case "Take Snap":
-                cameraManager.takePhoto();
-                break;
-			case "Set Danger":
-				SetDanger();
-				break;
-			case "Mark Object":
-				SetRemark();
-				break;
         }
 
     }
 
-	private void SetPrice()
+	private void SetRelevantPoint (GameObject relevantObject)
 	{
 		Quaternion toQuat = Camera.main.transform.localRotation;
 		toQuat.x = 0;
 		toQuat.z = 0;
-		GameObject lastCreated = Instantiate(pointofInterest, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, hologramCollection);
+		GameObject lastCreated = Instantiate(relevantObject, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, hologramCollection);
 
 		//Anchor Stuff
 		ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
@@ -83,50 +83,5 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 
 		cameraManager.setFocus(lastCreated);
 	}
-
-    private void SetDanger()
-    {
-        Quaternion toQuat = Camera.main.transform.localRotation;
-        toQuat.x = 0;
-        toQuat.z = 0;
-		GameObject lastCreated = Instantiate(danger, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, hologramCollection);
-
-        //Anchor Stuff
-        ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
-        clientManager.AnchorCounter++;
-        string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
-        WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
-
-        cameraManager.setFocus(lastCreated);
-    }
-
-	private void SetRemark()
-	{
-		Quaternion toQuat = Camera.main.transform.localRotation;
-		toQuat.x = 0;
-		toQuat.z = 0;
-		GameObject lastCreated = Instantiate(remark, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, hologramCollection);
-
-		//Anchor Stuff
-		ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
-		clientManager.AnchorCounter++;
-		string tmp = String.Concat(clientManager.ClientId, clientManager.AnchorCounter.ToString());
-		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
-
-		cameraManager.setFocus(lastCreated);
-	}
-
-    private void Remove()
-    {
-    }
-
-    private void RoomSave()
-    {
-
-    }
-
-    private void RoomImport()
-    {
-
-    }
+		
 }
