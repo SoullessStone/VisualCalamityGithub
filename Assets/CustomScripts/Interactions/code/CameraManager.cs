@@ -9,7 +9,9 @@ public class CameraManager : MonoBehaviour
     PhotoCapture photoCaptureObject = null;
     Texture2D targetTexture = null;
     GameObject FocusedValue;
+    public GameObject lastCreated;
     public ImageDemo azure;
+    public GameObject image;
         
 
     // Use this for initialization
@@ -47,29 +49,26 @@ public class CameraManager : MonoBehaviour
         photoCaptureFrame.UploadImageDataToTexture(targetTexture);
 
         byte[] pic= targetTexture.EncodeToJPG();
+
+        if (FocusedValue == null)
+        {
+            if (lastCreated != null)
+                FocusedValue = lastCreated;
+            else
+                return ;
+            
+        }
+
         azure.PutImage(pic,FocusedValue.name +".jpg");
+
 
         // Create a GameObject to which the texture can be applied
         //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
 
-        if (FocusedValue == null)
-        {
-            return;
-        }
-        Renderer quadRenderer = FocusedValue.GetComponent<Renderer>() as Renderer;
-        //quadRenderer.material = new Material(Shader.Find("Standard"));
-  
-        quadRenderer.material = new Material(Shader.Find("Standard"));
-        //It is due to the the same name of the Material...Find and rename the material of the new object then 
-        //remove the mesh renderer component and add it back.. and Now add the material to mesh renderer.. 
-
-        //quad.transform.parent = this.transform;
-        //quad.transform.localPosition = new Vector3(0.0f, 0.0f, 3.0f);
-
-        quadRenderer.material.SetTexture("_MainTex", targetTexture);
+     
+        FocusedValue.GetComponent<Renderer>().enabled = false;
+        Instantiate(image,FocusedValue.transform);
         
-        // Deactivate the camera
-        //photoCaptureObject.StopPhotoModeAsync(OnStoppedPhotoMode);
     }
 
     void OnStoppedPhotoMode(PhotoCapture.PhotoCaptureResult result)
@@ -81,9 +80,14 @@ public class CameraManager : MonoBehaviour
 
     public void setFocus(GameObject obj)
     {
-        if(FocusedValue!=null)
-            FocusedValue.GetComponent<Renderer>().material = new Material(Shader.Find("VertexLit"));
-       
+   
+
+    foreach (Transform child in FocusedValue.transform)
+        {
+            Destroy(child);
+        }
+
+        FocusedValue.GetComponent<Renderer>().enabled = true;
         FocusedValue = obj;
     }
 }

@@ -450,8 +450,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35a1116a421eebf42b056acf38910449, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  storageAccount: testmobi
-  accessKey: 4Ej0s9O1XvkupsFVX9bhLErmTdn3caW+s/sCUu1cmjjZ8rsxlxmYvVUvAQrSF7TgLuo50mu8Difp7mGGH6l3YA==
+  storageAccount: cmblobs
+  accessKey: OgYRXeDctljj4uUYhHJ2/8goK2E7Uu3KOdjwH9vHLjoqcEYzlIVMfTLl8B56cG040kd8pxdvGUcd2Dm8IkNS+Q==
   container: image
 --- !u!4 &620446701
 Transform:
@@ -641,7 +641,7 @@ MonoBehaviour:
     KeyCode: 60
   - Keyword: Load Snap
     KeyCode: 94
-  - Keyword: Take Snap
+  - Keyword: Take Picture
     KeyCode: 97
   - Keyword: Set Danger
     KeyCode: 52
@@ -904,6 +904,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   azure: {fileID: 620446700}
+  image: {fileID: 0}
 --- !u!4 &1679026454
 Transform:
   m_ObjectHideFlags: 0

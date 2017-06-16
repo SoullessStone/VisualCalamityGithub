@@ -53,7 +53,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 			case "Mark Object":
 				SetRelevantPoint(remark, "REM");
 				break;
-			case "Take Snap":
+			case "Take Picture":
 				cameraManager.takePhoto();
 				break;
             case "Fire Start":
@@ -63,6 +63,10 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
             case "Fire Stop":
                 flareMobile.SetActive(false);
                 readSchadenPrice.disablePriceView();
+                break;
+            case "Set Focus":
+               
+                cameraManager.setFocus(raycastCollissions.collision);
                 break;
         }
 
@@ -82,7 +86,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 		tmp = String.Concat(tmp, "_" + clientManager.AnchorCounter.ToString());
 		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
 
-		//cameraManager.setFocus(lastCreated);
+        cameraManager.lastCreated = relevantObject;
 	}
 		
 }
