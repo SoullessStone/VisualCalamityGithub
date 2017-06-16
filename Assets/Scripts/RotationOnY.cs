@@ -14,6 +14,6 @@ public class RotationOnY : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		trans.rotation = Vector3.up * -rotationSpeed * Time.deltaTime;
+		trans.Rotate(Vector3.up * -rotationSpeed * Time.deltaTime, Space.World);
 	}
 }
