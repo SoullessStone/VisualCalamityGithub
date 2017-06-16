@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class RotationOnY : MonoBehaviour {
 
-	public float rotationSpeed;
+	public float rotationSpeed = 100;
 
 	private Transform trans;
 
 	void Start(){
-		trans = GetComponent<Transform> ();
+		trans = this.GetComponent<Transform> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
-		trans.Rotate (Vector3.up * -rotationSpeed * Time.deltaTime);
+		trans.rotation = Vector3.up * -rotationSpeed * Time.deltaTime;
 	}
 }
