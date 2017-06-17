@@ -32,11 +32,12 @@ public class RaycastCollisions : MonoBehaviour {
                 collision = hit.transform.gameObject;
                 if (lastCollide != collision)
                 {
-                    cameraManager.setFocus(collision);
+                    
                     cameraManager.image.SetActive(false);
                     if(lastCollide!=null)
                         lastCollide.SetActive(true);
-                                      
+                    cameraManager.setFocus(collision);
+
                 }
                 lastCollide = collision;
             }

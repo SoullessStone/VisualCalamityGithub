@@ -60,6 +60,7 @@ public class CameraManager : MonoBehaviour
         }
 
         azure.PutImage(pic,FocusedValue.name +".jpg");
+        StartCoroutine(GetTexture(FocusedValue));
         PlaceImage();
 
 
@@ -76,7 +77,7 @@ public class CameraManager : MonoBehaviour
     public void setFocus(GameObject obj)
     {
         FocusedValue = obj;
-        StartCoroutine(GetTexture(FocusedValue));
+        StartCoroutine(GetTexture(obj));
         
     }
 
@@ -86,13 +87,9 @@ public class CameraManager : MonoBehaviour
         // Wait for download to complete
         yield return www;
 
-        if (www.texture != null)
-        {
-            // assign texture
-            targetTexture = www.texture;
-            PlaceImage();
-        }
-     
+        image.GetComponent<Renderer>().material.mainTexture=www.texture;
+        PlaceImage();
+
     }
 
     private void PlaceImage()
@@ -104,6 +101,6 @@ public class CameraManager : MonoBehaviour
         image.transform.rotation = FocusedValue.transform.rotation;
 
         image.SetActive(true);
-        image.GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
+        
     }
 }
