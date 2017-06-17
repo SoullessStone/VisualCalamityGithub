@@ -58,22 +58,11 @@ public class CameraManager : MonoBehaviour
                 return ;
             
         }
-        Debug.Log("hey "+FocusedValue.name);
+
         azure.PutImage(pic,FocusedValue.name +".jpg");
+        PlaceImage();
 
 
-        // Create a GameObject to which the texture can be applied
-        //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
-
-        
-
-
-        image.transform.position = FocusedValue.transform.position- new Vector3(0.25f,0.25f,-0.05f);
-        image.transform.rotation = FocusedValue.transform.rotation;
-        image.SetActive(true);
-        image.GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
-
-           
 
     }
 
@@ -86,16 +75,35 @@ public class CameraManager : MonoBehaviour
 
     public void setFocus(GameObject obj)
     {
-        
-        image.SetActive(false);
         FocusedValue = obj;
+        StartCoroutine(GetTexture(FocusedValue));
+        
+    }
 
+    private IEnumerator GetTexture(GameObject obj)
+    {
+        var www = new WWW("https://cmblobs.blob.core.windows.net/image/" + obj.name + ".jpg");
+        // Wait for download to complete
+        yield return www;
 
-        var img = azure.LoadImageURL("https://cmblobs.blob.core.windows.net/image/" + obj.name + ".jpg");
-        if (img.Current != null)
+        if (www.texture != null)
         {
-            Texture tex = img.Current as Texture;
-            obj.GetComponent<Renderer>().material.mainTexture = tex;
+            // assign texture
+            targetTexture = www.texture;
+            PlaceImage();
         }
+     
+    }
+
+    private void PlaceImage()
+    {
+        FocusedValue.SetActive(false);
+        // Create a GameObject to which the texture can be applied
+        //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
+        image.transform.position = new Vector3(FocusedValue.transform.position.x, FocusedValue.transform.position.y, FocusedValue.transform.position.z);
+        image.transform.rotation = FocusedValue.transform.rotation;
+
+        image.SetActive(true);
+        image.GetComponent<Renderer>().material.SetTexture("_MainTex", targetTexture);
     }
 }

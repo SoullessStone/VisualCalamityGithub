@@ -7,10 +7,13 @@ public class RaycastCollisions : MonoBehaviour {
     public Vector3 normalHit;
     public Vector3 hitPoint;
     public GameObject collision;
+    public GameObject lastCollide;
+    public CameraManager cameraManager;
 
     // Use this for initialization
     void Start()
     {
+        cameraManager = FindObjectOfType<CameraManager>();
     }
 
     // Update is called once per frame
@@ -23,10 +26,21 @@ public class RaycastCollisions : MonoBehaviour {
             normalHit = hit.normal;
             hitPoint = hit.point;
            
-            if (hit.transform.gameObject != null && hit.transform.gameObject.CompareTag("PointOfInterest"))
+            if (hit.transform.gameObject != null && (hit.transform.gameObject.CompareTag("PointOfInterest")||
+                hit.transform.gameObject.CompareTag("PointOfDanger")))
             {
                 collision = hit.transform.gameObject;
-            }else
+                if (lastCollide != collision)
+                {
+                    cameraManager.setFocus(collision);
+                    cameraManager.image.SetActive(false);
+                    if(lastCollide!=null)
+                        lastCollide.SetActive(true);
+                                      
+                }
+                lastCollide = collision;
+            }
+            else
             {
                 collision = null;
             }
@@ -38,5 +52,7 @@ public class RaycastCollisions : MonoBehaviour {
             collision = null;
         }
     }
+
+
 
 }

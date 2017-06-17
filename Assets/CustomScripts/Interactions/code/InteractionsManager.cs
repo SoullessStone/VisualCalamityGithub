@@ -16,7 +16,6 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 	private RaycastCollisions raycastCollissions;
     private CameraManager cameraManager;
 
-    private RaycastCollisions raycastCollisionsScript;
     private ImageDemo imageDemo;
     private ReadSchadenPrice readSchadenPrice;
 	private Transform hologramCollection;
@@ -31,8 +30,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 	void Start () {
         raycastCollissions = FindObjectOfType<RaycastCollisions>();
         cameraManager = FindObjectOfType<CameraManager>();
-
-        raycastCollisionsScript = FindObjectOfType<RaycastCollisions>();
+        
         imageDemo = FindObjectOfType<ImageDemo>();
         readSchadenPrice = FindObjectOfType<ReadSchadenPrice>();
         readSchadenPrice.disablePriceView();
@@ -64,9 +62,8 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
                 flareMobile.SetActive(false);
                 readSchadenPrice.disablePriceView();
                 break;
-            case "Set Focus":
-               
-                cameraManager.setFocus(raycastCollissions.collision);
+            case "Set Focus":            
+                cameraManager.setFocus(raycastCollissions.lastCollide);
                 break;
         }
 
@@ -88,6 +85,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
 
         cameraManager.lastCreated = relevantObject;
+        cameraManager.takePhoto();
 	}
 		
 }
