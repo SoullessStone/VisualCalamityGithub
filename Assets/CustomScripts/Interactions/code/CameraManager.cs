@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Linq;
 using UnityEngine.VR.WSA.WebCam;
-using System;
 
 public class CameraManager : MonoBehaviour
 {
@@ -17,8 +16,7 @@ public class CameraManager : MonoBehaviour
 
     // Use this for initialization
     void Start()
-    {
-      
+    {  
         Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
         targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
 
@@ -38,6 +36,11 @@ public class CameraManager : MonoBehaviour
         });
     }
 
+    public GameObject getFocusedObject()
+    {
+        return focusedValue;
+    }
+
     public void takePhoto()
     {
         photoCaptureObject.TakePhotoAsync(OnCapturedPhotoToMemory);
@@ -45,15 +48,12 @@ public class CameraManager : MonoBehaviour
 
     void OnCapturedPhotoToMemory(PhotoCapture.PhotoCaptureResult result, PhotoCaptureFrame photoCaptureFrame)
     {
- 
-        // Copy the raw image data into the target texture
+         // Copy the raw image data into the target texture
         photoCaptureFrame.UploadImageDataToTexture(targetTexture);
 
         byte[] pic= targetTexture.EncodeToJPG();
 
-        azure.PutImage(pic,lastCreated.name +".jpg");
-        
-        //StartCoroutine(GetTexture(FocusedValue));
+        azure.PutImage(pic, lastCreated.name +".jpg");
     }
 
     void OnStoppedPhotoMode(PhotoCapture.PhotoCaptureResult result)

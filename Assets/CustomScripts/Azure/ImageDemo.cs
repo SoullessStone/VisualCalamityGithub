@@ -21,20 +21,12 @@ public class ImageDemo : MonoBehaviour
 
 	private StorageServiceClient client;
 	private BlobService blobService;
-
-	
-
-	private bool isCaptured = false;
-
 	private string localPath;
 
 	void Start ()
 	{
-
-
 		client = new StorageServiceClient (storageAccount, accessKey);
 		blobService = client.GetBlobService ();
-
 	}
 
 
@@ -68,16 +60,4 @@ public class ImageDemo : MonoBehaviour
 
         }
     }
-        
-	}
-
-
-
-	
-
-
-
-	
-
-
-
+}

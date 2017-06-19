@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class ReadSchadenPrice : MonoBehaviour
 {
@@ -8,7 +6,6 @@ public class ReadSchadenPrice : MonoBehaviour
     public int price = 0;
     int priceDelta = 0;
     public TextMesh text;
-    public GameObject collection;
     public int insuredValuePerObject = 900; 
 
     // Use this for initialization

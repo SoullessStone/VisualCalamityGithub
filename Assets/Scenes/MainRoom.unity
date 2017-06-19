@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed2bfe528d69b1d42bfb1fbdc86df83b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ClientId: 18236716
+  ClientId: 18236002
   AnchorCounter: 0
   PointOfInterest: {fileID: 1470514933115334, guid: 6967676b4408dc54c9bdf914583e74a4,
     type: 2}
@@ -352,11 +352,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed72ad3982bb7c543ad5ce92fbd8c909, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  normalHit: {x: 0, y: 0, z: 0}
   hitPoint: {x: 0, y: 0, z: 0}
   collision: {fileID: 0}
-  lastCollide: {fileID: 0}
-  cameraManager: {fileID: 0}
 --- !u!4 &497751775 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4000010560871102, guid: d379ed0a5618c9f479f58bd83a2d0ad3,
@@ -710,16 +707,10 @@ MonoBehaviour:
     KeyCode: 44
   - Keyword: Fire Stop
     KeyCode: 60
-  - Keyword: Load Snap
-    KeyCode: 94
-  - Keyword: Take Picture
-    KeyCode: 97
   - Keyword: Set Danger
     KeyCode: 52
   - Keyword: Mark Object
     KeyCode: 57
-  - Keyword: Set Focus
-    KeyCode: 53
 --- !u!1001 &1024910614
 Prefab:
   m_ObjectHideFlags: 0
@@ -1031,5 +1022,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   price: 0
   text: {fileID: 1879785752}
-  collection: {fileID: 622867647}
   insuredValuePerObject: 900

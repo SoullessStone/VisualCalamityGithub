@@ -1,12 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class readPrice : MonoBehaviour
 {
 
     public int price = 0;
-    int priceDelta = 0;
     int maxSteps = 30;
     int steps = 0;
     bool isNewPriceActive = false;

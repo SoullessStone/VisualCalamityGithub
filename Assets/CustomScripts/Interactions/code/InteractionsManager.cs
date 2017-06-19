@@ -17,7 +17,6 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
     private CameraManager cameraManager;
     private ClientManager clientManager;
 
-    private ImageDemo imageDemo;
     private ReadSchadenPrice readSchadenPrice;
 	private Transform hologramCollection;
 
@@ -32,7 +31,6 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         raycastCollissions = FindObjectOfType<RaycastCollisions>();
         cameraManager = FindObjectOfType<CameraManager>();
         
-        imageDemo = FindObjectOfType<ImageDemo>();
         readSchadenPrice = FindObjectOfType<ReadSchadenPrice>();
         readSchadenPrice.disablePriceView();
 
@@ -53,9 +51,6 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 			case "Mark Object":
 				SetRelevantPoint(remark, "REM");
 				break;
-			case "Take Picture":
-				cameraManager.takePhoto();
-				break;
             case "Fire Start":
                 flareMobile.SetActive(true);
                 readSchadenPrice.enablePriceView();
@@ -64,10 +59,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
                 flareMobile.SetActive(false);
                 readSchadenPrice.disablePriceView();
                 break;
-            /*case "Set Focus":            
-                cameraManager.setFocus(raycastCollissions.lastCollide);
-                break;*/
-        }
+		}
 
     }
 
