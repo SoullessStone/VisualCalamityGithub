@@ -12,7 +12,7 @@ public class CameraManager : MonoBehaviour
 
     private PhotoCapture photoCaptureObject = null;
     private Texture2D targetTexture = null;
-    private GameObject FocusedValue;
+    private GameObject focusedValue;
         
 
     // Use this for initialization
@@ -68,17 +68,18 @@ public class CameraManager : MonoBehaviour
         image.SetActive(false);
 
         //restore the previous object the camera was focused on
-        if(FocusedValue != null)
+        if(focusedValue != null)
         {
-            FocusedValue.SetActive(true);
+            focusedValue.SetActive(true);
         }
 
-        FocusedValue = obj;
-        loadTextureFor(FocusedValue);
+        //set the new focuse and load its image there
+        focusedValue = obj;
+        loadTextureFor(focusedValue);
 
         // turn of the current object the camera is focused on since 
         // there is the image active for it
-        FocusedValue.SetActive(false);
+        focusedValue.SetActive(false);
     }
 
     public void loadTextureFor(GameObject obj)
@@ -101,8 +102,8 @@ public class CameraManager : MonoBehaviour
     {
         // Create a GameObject to which the texture can be applied
         //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
-        image.transform.position = new Vector3(FocusedValue.transform.position.x, FocusedValue.transform.position.y, FocusedValue.transform.position.z);
-        image.transform.rotation = FocusedValue.transform.rotation;
+        image.transform.position = new Vector3(focusedValue.transform.position.x, focusedValue.transform.position.y, focusedValue.transform.position.z);
+        image.transform.rotation = focusedValue.transform.rotation;
         image.SetActive(true);
     }
 }

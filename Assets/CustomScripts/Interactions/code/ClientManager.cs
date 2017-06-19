@@ -32,14 +32,14 @@ public class ClientManager : MonoBehaviour
         if (WorldAnchorManager.Instance.AnchorStore != null)
         {
 
-            String[] savedAnchorList = WorldAnchorManager.Instance.AnchorStore.GetAllIds();
+            String[] savedAnchorIdList = WorldAnchorManager.Instance.AnchorStore.GetAllIds();
 
-            foreach (string s in savedAnchorList)
+            foreach (string savedAnchorId in savedAnchorIdList)
             {
-                if (s.StartsWith(ClientId))
+                if (savedAnchorId.StartsWith(ClientId))
                 {
                    //first is client number, second type, third photo number
-                    String [] splittedAnchor = s.Split('_');
+                    String [] splittedAnchor = savedAnchorId.Split('_');
 
                     int number = Int32.Parse(splittedAnchor[2]);
                     if (AnchorCounter < number)
@@ -62,8 +62,8 @@ public class ClientManager : MonoBehaviour
 
                     GameObject obj = Instantiate(go, GameObject.Find("HologramCollection").transform);
                     //set name to client
-                    obj.name = s;
-                    WorldAnchor world = WorldAnchorManager.Instance.AnchorStore.Load(s, obj);
+                    obj.name = savedAnchorId;
+                    WorldAnchor world = WorldAnchorManager.Instance.AnchorStore.Load(savedAnchorId, obj);
 
                     world.OnTrackingChanged += World_OnTrackingChanged;
                
