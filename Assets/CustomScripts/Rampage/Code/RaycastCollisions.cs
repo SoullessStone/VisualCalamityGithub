@@ -49,7 +49,7 @@ public class RaycastCollisions : MonoBehaviour {
 
             if(cameraManager.lastCreated != collision || cameraManager.getFocusedObject() != lastCollide)
             {
-                cameraManager.setFocus(collision);
+                cameraManager.setFocus(collision, null);
             }
             lastCollide = collision;
         }

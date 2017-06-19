@@ -12,12 +12,16 @@ public class CameraManager : MonoBehaviour
     private PhotoCapture photoCaptureObject = null;
     private Texture2D targetTexture = null;
     private GameObject focusedValue;
-        
+    
+    private int cameraResolutionWidth;
+    private int cameraResolutionHeight;
 
     // Use this for initialization
     void Start()
     {  
         Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
+        cameraResolutionWidth = cameraResolution.width;
+        cameraResolutionHeight = cameraResolution.height;
         targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
 
         // Create a PhotoCapture object
@@ -44,6 +48,7 @@ public class CameraManager : MonoBehaviour
     public void takePhoto()
     {
         photoCaptureObject.TakePhotoAsync(OnCapturedPhotoToMemory);
+        setFocus(lastCreated, targetTexture);
     }
 
     void OnCapturedPhotoToMemory(PhotoCapture.PhotoCaptureResult result, PhotoCaptureFrame photoCaptureFrame)
@@ -63,7 +68,7 @@ public class CameraManager : MonoBehaviour
         photoCaptureObject = null;
     }
 
-    public void setFocus(GameObject obj)
+    public void setFocus(GameObject obj, Texture2D tex)
     {
         image.SetActive(false);
 
@@ -75,7 +80,13 @@ public class CameraManager : MonoBehaviour
 
         //set the new focuse and load its image there
         focusedValue = obj;
-        loadTextureFor(focusedValue);
+        if (tex == null)
+        {
+            loadTextureFor(focusedValue);
+        } else
+        {
+            setTextureOnImage(tex);
+        }
 
         // turn of the current object the camera is focused on since 
         // there is the image active for it
@@ -85,17 +96,23 @@ public class CameraManager : MonoBehaviour
     public void loadTextureFor(GameObject obj)
     {
         StartCoroutine(GetTexture(obj));
+        //GetTexture(obj);
     }
 
     private IEnumerator GetTexture(GameObject obj)
     {
-        var www = new WWW("https://cmblobs.blob.core.windows.net/image/" + obj.name + ".jpg");
+        WWW www = new WWW("https://cmblobs.blob.core.windows.net/image/" + obj.name + ".jpg");
         // Wait for download to complete
         yield return www;
 
-        image.GetComponent<Renderer>().material.mainTexture = www.texture;
+        setTextureOnImage(www.texture);           
+    }
 
-        PlaceImage();             
+    private void setTextureOnImage(Texture2D tex)
+    {
+        image.GetComponent<Renderer>().material.mainTexture = tex;
+        
+        PlaceImage();  
     }
 
     private void PlaceImage()

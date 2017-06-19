@@ -82,7 +82,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         //make sure you create a picture of the latest thing you are looking at and you visualize it
         cameraManager.lastCreated = lastCreated;
         cameraManager.takePhoto();
-        cameraManager.setFocus(lastCreated);
+        //cameraManager.setFocus(lastCreated);
 	}
 		
 }
