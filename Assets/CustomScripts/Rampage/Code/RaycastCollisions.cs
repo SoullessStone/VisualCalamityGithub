@@ -36,6 +36,8 @@ public class RaycastCollisions : MonoBehaviour {
     {
         hitPoint = hit.point;
 
+        collision = null;
+
         if (isRelevantObject(ref hit))
         {
             collision = hit.transform.gameObject;
@@ -51,15 +53,12 @@ public class RaycastCollisions : MonoBehaviour {
                 lastCollide = collision;                
             }               
         }
-        else
-        {
-            collision = null;
-        }
     }
 
     private static bool isRelevantObject(ref RaycastHit hit)
     {
-        return hit.transform.gameObject != null && (hit.transform.gameObject.CompareTag("PointOfInterest")
+        return hit.transform.gameObject != null && 
+                    (hit.transform.gameObject.CompareTag("PointOfInterest")
                     || hit.transform.gameObject.CompareTag("PointOfDanger")
                     || hit.transform.gameObject.CompareTag("Remark"));
     }

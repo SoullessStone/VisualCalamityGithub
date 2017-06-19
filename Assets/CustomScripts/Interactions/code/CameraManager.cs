@@ -51,16 +51,7 @@ public class CameraManager : MonoBehaviour
 
         byte[] pic= targetTexture.EncodeToJPG();
 
-        /*if (FocusedValue == null)
-        {
-            if (lastCreated != null)
-                FocusedValue = lastCreated;
-            else
-                return ;
-            
-        }*/
-
-        azure.PutImage(pic,FocusedValue.name +".jpg");
+        azure.PutImage(pic,lastCreated.name +".jpg");
         
         //StartCoroutine(GetTexture(FocusedValue));
     }
@@ -75,9 +66,18 @@ public class CameraManager : MonoBehaviour
     public void setFocus(GameObject obj)
     {
         image.SetActive(false);
-        FocusedValue.SetActive(true);
+
+        //restore the previous object the camera was focused on
+        if(FocusedValue != null)
+        {
+            FocusedValue.SetActive(true);
+        }
+
         FocusedValue = obj;
         loadTextureFor(FocusedValue);
+
+        // turn of the current object the camera is focused on since 
+        // there is the image active for it
         FocusedValue.SetActive(false);
     }
 

@@ -87,6 +87,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         lastCreated.name = tmp;
 		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
 
+        //make sure you create a picture of the latest thing you are looking at and you visualize it
         cameraManager.lastCreated = lastCreated;
         cameraManager.takePhoto();
         cameraManager.setFocus(lastCreated);
