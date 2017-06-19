@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114492319518176112}
   m_Layer: 0
   m_Name: Remark
-  m_TagString: PointOfDanger
+  m_TagString: Remark
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

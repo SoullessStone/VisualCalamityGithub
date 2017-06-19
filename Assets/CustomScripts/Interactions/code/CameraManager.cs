@@ -6,12 +6,13 @@ using System;
 
 public class CameraManager : MonoBehaviour
 {
-    PhotoCapture photoCaptureObject = null;
-    Texture2D targetTexture = null;
-    GameObject FocusedValue;
     public GameObject lastCreated;
     public ImageDemo azure;
     public GameObject image;
+
+    private PhotoCapture photoCaptureObject = null;
+    private Texture2D targetTexture = null;
+    private GameObject FocusedValue;
         
 
     // Use this for initialization
@@ -50,21 +51,18 @@ public class CameraManager : MonoBehaviour
 
         byte[] pic= targetTexture.EncodeToJPG();
 
-        if (FocusedValue == null)
+        /*if (FocusedValue == null)
         {
             if (lastCreated != null)
                 FocusedValue = lastCreated;
             else
                 return ;
             
-        }
+        }*/
 
         azure.PutImage(pic,FocusedValue.name +".jpg");
-        StartCoroutine(GetTexture(FocusedValue));
-        PlaceImage();
-
-
-
+        
+        //StartCoroutine(GetTexture(FocusedValue));
     }
 
     void OnStoppedPhotoMode(PhotoCapture.PhotoCaptureResult result)
@@ -76,9 +74,16 @@ public class CameraManager : MonoBehaviour
 
     public void setFocus(GameObject obj)
     {
+        image.SetActive(false);
+        FocusedValue.SetActive(true);
         FocusedValue = obj;
+        loadTextureFor(FocusedValue);
+        FocusedValue.SetActive(false);
+    }
+
+    public void loadTextureFor(GameObject obj)
+    {
         StartCoroutine(GetTexture(obj));
-        
     }
 
     private IEnumerator GetTexture(GameObject obj)
@@ -87,20 +92,17 @@ public class CameraManager : MonoBehaviour
         // Wait for download to complete
         yield return www;
 
-        image.GetComponent<Renderer>().material.mainTexture=www.texture;
-        PlaceImage();
+        image.GetComponent<Renderer>().material.mainTexture = www.texture;
 
+        PlaceImage();             
     }
 
     private void PlaceImage()
     {
-        FocusedValue.SetActive(false);
         // Create a GameObject to which the texture can be applied
         //GameObject quad = GameObject.CreatePrimitive(PrimitiveType.Quad);
         image.transform.position = new Vector3(FocusedValue.transform.position.x, FocusedValue.transform.position.y, FocusedValue.transform.position.z);
         image.transform.rotation = FocusedValue.transform.rotation;
-
         image.SetActive(true);
-        
     }
 }

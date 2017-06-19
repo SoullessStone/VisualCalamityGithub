@@ -15,6 +15,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 
 	private RaycastCollisions raycastCollissions;
     private CameraManager cameraManager;
+    private ClientManager clientManager;
 
     private ImageDemo imageDemo;
     private ReadSchadenPrice readSchadenPrice;
@@ -36,6 +37,7 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
         readSchadenPrice.disablePriceView();
 
 		hologramCollection = GameObject.Find ("HologramCollection").transform;
+        clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
     }
 	
     public void OnSpeechKeywordRecognized(SpeechKeywordRecognizedEventData eventData)
@@ -62,9 +64,9 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
                 flareMobile.SetActive(false);
                 readSchadenPrice.disablePriceView();
                 break;
-            case "Set Focus":            
+            /*case "Set Focus":            
                 cameraManager.setFocus(raycastCollissions.lastCollide);
-                break;
+                break;*/
         }
 
     }
@@ -76,16 +78,18 @@ public class InteractionsManager : MonoBehaviour, IInputClickHandler, ISpeechHan
 		toQuat.z = 0;
 		GameObject lastCreated = Instantiate(relevantObject, raycastCollissions.hitPoint - gameObject.transform.position, toQuat, hologramCollection);
 
-		//Anchor Stuff
-		ClientManager clientManager = GameObject.Find("ClientManager").GetComponent<ClientManager>();
-		clientManager.AnchorCounter++;
+        lastCreated.GetComponent<RotationOnY>().rotationSpeed = 100;
+
+        //Anchor Stuff		
+        clientManager.AnchorCounter++;
 		string tmp = String.Concat(clientManager.ClientId, "_" + objectType);
 		tmp = String.Concat(tmp, "_" + clientManager.AnchorCounter.ToString());
-        relevantObject.name = tmp;
+        lastCreated.name = tmp;
 		WorldAnchorManager.Instance.AttachAnchor(lastCreated, tmp);
 
-        cameraManager.lastCreated = relevantObject;
+        cameraManager.lastCreated = lastCreated;
         cameraManager.takePhoto();
+        cameraManager.setFocus(lastCreated);
 	}
 		
 }
