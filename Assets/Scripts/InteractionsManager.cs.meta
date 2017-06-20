@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 02adee140fd95184e8f1a58b76d175a0
+timeCreated: 1497886431
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - pointofInterest: {fileID: 1470514933115334, guid: 6967676b4408dc54c9bdf914583e74a4,
+      type: 2}
+  - danger: {fileID: 1238300773003140, guid: 3a6090f5b93466e428f00a4a13777b44, type: 2}
+  - remark: {fileID: 1261328328231392, guid: f1f746239f35dd64297a5b53411c7e95, type: 2}
+  - flareMobile: {fileID: 100006, guid: ccbcfc705a39717429590a9f247ec30a, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
