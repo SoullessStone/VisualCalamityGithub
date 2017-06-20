@@ -48,13 +48,14 @@ public class CameraManager : MonoBehaviour
     public void takePhoto()
     {
         photoCaptureObject.TakePhotoAsync(OnCapturedPhotoToMemory);
-        setFocus(lastCreated, targetTexture);
     }
 
     void OnCapturedPhotoToMemory(PhotoCapture.PhotoCaptureResult result, PhotoCaptureFrame photoCaptureFrame)
     {
          // Copy the raw image data into the target texture
         photoCaptureFrame.UploadImageDataToTexture(targetTexture);
+
+        setFocus(lastCreated, targetTexture);
 
         byte[] pic= targetTexture.EncodeToJPG();
 
