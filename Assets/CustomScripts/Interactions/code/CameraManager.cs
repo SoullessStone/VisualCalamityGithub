@@ -12,16 +12,11 @@ public class CameraManager : MonoBehaviour
     private PhotoCapture photoCaptureObject = null;
     private Texture2D targetTexture = null;
     private GameObject focusedValue;
-    
-    private int cameraResolutionWidth;
-    private int cameraResolutionHeight;
-
+ 
     // Use this for initialization
     void Start()
     {  
         Resolution cameraResolution = PhotoCapture.SupportedResolutions.OrderByDescending((res) => res.width * res.height).First();
-        cameraResolutionWidth = cameraResolution.width;
-        cameraResolutionHeight = cameraResolution.height;
         targetTexture = new Texture2D(cameraResolution.width, cameraResolution.height);
 
         // Create a PhotoCapture object
